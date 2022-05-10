@@ -1,4 +1,6 @@
-package Chapter1;
+package Chapter1.db;
+
+import Chapter1.model.Footballer;
 
 import java.util.ArrayList;
 

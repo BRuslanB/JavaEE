@@ -1,4 +1,7 @@
-package Chapter1;
+package Chapter1.servlets;
+
+import Chapter1.db.DBManager;
+import Chapter1.model.Footballer;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -9,7 +12,7 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-@WebServlet(value = "/task3")
+@WebServlet(value = "/chapter1.task3")
 public class Task3 extends HttpServlet {
 
     @Override

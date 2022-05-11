@@ -8,8 +8,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.io.PrintWriter;
 
-@WebServlet(value = "/chapter1.task1")
-public class Task1 extends HttpServlet {
+@WebServlet(value = "/Chapter1.HomeTask1")
+public class HomeTask1 extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request,

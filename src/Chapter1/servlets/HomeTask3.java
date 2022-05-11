@@ -12,8 +12,8 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.ArrayList;
 
-@WebServlet(value = "/chapter1.task3")
-public class Task3 extends HttpServlet {
+@WebServlet(value = "/Chapter1.HomeTask3")
+public class HomeTask3 extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request,

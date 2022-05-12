@@ -6,7 +6,7 @@
 <head>
     <meta charset="UTF-8">
     <title>Task1</title>
-    <%@include file="vendor/Chapter2.Task1.Head.jsp"%>
+    <%@include file="vendor/Chapter2.Head.jsp"%>
     <style>
         .bg_color1 {
             background-color: #2F4F4F;

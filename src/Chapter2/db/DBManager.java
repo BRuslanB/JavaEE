@@ -1,7 +1,7 @@
 package Chapter2.db;
 
-import Chapter1.model.Footballer;
 import Chapter2.model.News;
+import Chapter2.model.Tasks;
 
 import java.util.ArrayList;
 
@@ -26,8 +26,34 @@ public class DBManager {
                 "concluded its six-episode run, and among the major events in the finale was Anthony Mackie's Sam " +
                 "Wilson suiting up as Captain America for the first time.", "Adreon Patterson", "Sport"));
     }
-
     public static ArrayList<News> getAllNews() { //этот метод возвращает список всех футболистов
         return news;
+    }
+
+    public static ArrayList<Tasks> tasks = new ArrayList<>();
+    public static Long id = 1L;
+    public static void addTask(Tasks task) { //этот метод добавляет новую задачу в список
+        task.setId(id);
+        tasks.add(task);
+        id++;
+    }
+    public static Tasks getTask(Long id) { // этот метод возвращает объект задачи по id
+        for (Tasks t : tasks) {
+            if (t.getId() == id) {
+                return tasks.get(Math.toIntExact(id));
+            }
+        }
+        return null;
+    }
+    public static ArrayList<Tasks> getAllTasks() { //этот метод возвращает список всех задач
+        return tasks;
+    }
+    public static void deleteTask(Long id) { //этот метод удаляет задачу из списка по id
+        for (Tasks t : tasks) {
+            if (t.getId() == id) {
+                tasks.remove(id);
+                return;
+            }
+        }
     }
 }

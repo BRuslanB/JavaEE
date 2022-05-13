@@ -38,22 +38,19 @@ public class DBManager {
         id++;
     }
     public static Tasks getTask(Long id) { // этот метод возвращает объект задачи по id
-        for (Tasks t : tasks) {
-            if (t.getId() == id) {
-                return tasks.get(Math.toIntExact(id));
-            }
-        }
+        for (Tasks t : tasks)
+            if (t.getId() == id)
+                return t;
         return null;
     }
     public static ArrayList<Tasks> getAllTasks() { //этот метод возвращает список всех задач
         return tasks;
     }
     public static void deleteTask(Long id) { //этот метод удаляет задачу из списка по id
-        for (Tasks t : tasks) {
+        for (Tasks t : tasks)
             if (t.getId() == id) {
                 tasks.remove(id);
                 return;
             }
-        }
     }
 }

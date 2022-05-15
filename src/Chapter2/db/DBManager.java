@@ -56,7 +56,7 @@ public class DBManager {
         int i = 0;
         for (Tasks t : tasks) {
             if (t.getId() == id) {
-                out.print("DBManager.set" + i);
+                //out.print("DBManager.set" + i + "\n");
                 tasks.set(i, task);
                 return;
             }
@@ -67,7 +67,7 @@ public class DBManager {
         int i = 0;
         for (Tasks t : tasks) {
             if (t.getId() == id) {
-                out.print("DBManager.remove" + i);
+                //out.print("DBManager.remove" + i + "\n");
                 tasks.remove(i);
                 return;
             }

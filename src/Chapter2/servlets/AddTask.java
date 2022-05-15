@@ -24,7 +24,7 @@ public class AddTask extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
-
+        request.setCharacterEncoding("utf8");
         String name = request.getParameter("task_name");
         String description = request.getParameter("task_description");
         String deadline = request.getParameter("task_deadline");
@@ -37,6 +37,5 @@ public class AddTask extends HttpServlet {
         DBManager.addTask(task);
 
         response.sendRedirect("/");
-
     }
 }

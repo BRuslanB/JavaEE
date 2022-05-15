@@ -22,8 +22,9 @@ public class SaveTask extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf8");
         String id = request.getParameter("id");
-        out.print("save_task " + id + "\n");
+        //out.print("save_task " + id + "\n");
         Long taskId = null;
         try {
             taskId = Long.parseLong(id);

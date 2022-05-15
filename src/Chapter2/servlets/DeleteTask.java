@@ -22,8 +22,9 @@ public class DeleteTask extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf8");
         String id = request.getParameter("id");
-        out.print("delete_task " + id  + "\n");
+        //out.print("delete_task " + id  + "\n");
         Long taskId = null;
         try {
             taskId = Long.parseLong(id);

@@ -5,23 +5,6 @@
     <meta charset="UTF-8">
     <title>Task2</title>
     <%@include file="vendor/Chapter2.Head.jsp"%>
-    <style>
-        .bg_color1 {
-            background-color: darkblue;
-            color: white;
-        }
-        .color1 {
-            color: gray;
-        }
-        .button_style {
-            border-style: none;
-            border-radius: 1px;
-            background-color: darkblue;
-            color: whitesmoke;
-            padding: 5px 10px;
-            margin: 20px 0 20px 0;
-        }
-    </style>
 </head>
 <body>
     <!-- Навигационая панель -->

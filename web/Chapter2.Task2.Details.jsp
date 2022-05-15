@@ -5,23 +5,6 @@
     <meta charset="UTF-8">
     <title>Task2</title>
     <%@include file="vendor/Chapter2.Head.jsp"%>
-    <style>
-        .bg_color1 {
-            background-color: darkblue;
-            color: white;
-        }
-        .color1 {
-            color: gray;
-        }
-        .button_style {
-            border-style: none;
-            border-radius: 1px;
-            background-color: darkblue;
-            color: whitesmoke;
-            padding: 5px 10px;
-            margin: 20px 0 20px 0;
-        }
-    </style>
 </head>
 <body>
     <%@include file="vendor/Chapter2.Task2.Navbar.jsp"%>
@@ -30,7 +13,7 @@
             <div class="col-12">
                 <div class="col-6 mx-auto">
                     <%
-                        //request.setCharacterEncoding("utf8");
+                        request.setCharacterEncoding("utf8");
                         Tasks task = (Tasks) request.getAttribute("zadacha");
                         if (task != null) {
                     %>
@@ -75,10 +58,10 @@
                         </div>
                         <div class="row mt-2">
                             <div class="col-12">
-                                 <select class="form-control" name="task_status"
-                                           required value="<%=task.isStatus()%>">
-                                     <option value="0">Нет</option>
-                                     <option value="1">Да</option>
+                                <select class="form-control" name="task_status">
+                                           <%--required value="<%=(task.isStatus() ? "Да" : "Нет")%>"> не работает--%>
+                                     <option value="false" <%=(task.isStatus() ? "" : "selected")%>>Нет</option>
+                                     <option value="true" <%=(task.isStatus() ? "selected" : "")%>>Да</option>
                                  </select>
                             </div>
                         </div>

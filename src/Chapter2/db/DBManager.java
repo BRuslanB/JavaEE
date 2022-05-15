@@ -5,7 +5,10 @@ import Chapter2.model.Tasks;
 
 import java.util.ArrayList;
 
+import static java.lang.System.out;
+
 public class DBManager {
+    //Task 1
     public static ArrayList<News> news = new ArrayList<>();
 
     static {
@@ -26,14 +29,17 @@ public class DBManager {
                 "concluded its six-episode run, and among the major events in the finale was Anthony Mackie's Sam " +
                 "Wilson suiting up as Captain America for the first time.", "Adreon Patterson", "Sport"));
     }
-    public static ArrayList<News> getAllNews() { //этот метод возвращает список всех футболистов
+    public static ArrayList<News> getAllNews() { //этот метод возвращает список всех новостей
         return news;
     }
 
+    //Task 2
     public static ArrayList<Tasks> tasks = new ArrayList<>();
     public static Long id = 1L;
+    public static boolean status = false;
     public static void addTask(Tasks task) { //этот метод добавляет новую задачу в список
         task.setId(id);
+        task.setStatus(status);
         tasks.add(task);
         id++;
     }
@@ -46,11 +52,26 @@ public class DBManager {
     public static ArrayList<Tasks> getAllTasks() { //этот метод возвращает список всех задач
         return tasks;
     }
-    public static void deleteTask(Long id) { //этот метод удаляет задачу из списка по id
-        for (Tasks t : tasks)
+    public static void saveTask(Long id, Tasks task) { //этот метод сохраняет изменения в задаче
+        int i = 0;
+        for (Tasks t : tasks) {
             if (t.getId() == id) {
-                tasks.remove(id);
+                out.print("DBManager.set" + i);
+                tasks.set(i, task);
                 return;
             }
+            i++;
+        }
+    }
+    public static void deleteTask(Long id) { //этот метод удаляет задачу из списка по id
+        int i = 0;
+        for (Tasks t : tasks) {
+            if (t.getId() == id) {
+                out.print("DBManager.remove" + i);
+                tasks.remove(i);
+                return;
+            }
+            i++;
+        }
     }
 }

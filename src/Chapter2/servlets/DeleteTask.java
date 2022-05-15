@@ -12,25 +12,25 @@ import java.io.IOException;
 
 import static java.lang.System.out;
 
-@WebServlet(value = "/details")
-public class Details extends HttpServlet {
+@WebServlet(value = "/delete_task")
+public class DeleteTask extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, IOException {
+        //request.getRequestDispatcher("/Chapter2.Task2.AllTasks.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String id = request.getParameter("id");
-        out.print("details " + id + "\n");
+        out.print("delete_task " + id  + "\n");
         Long taskId = null;
         try {
             taskId = Long.parseLong(id);
         } catch (Exception e) {
         }
-        Tasks task = DBManager.getTask(taskId);
-        if (task != null) {
-            request.setCharacterEncoding("utf8");
-            request.setAttribute("zadacha", task);
-            request.getRequestDispatcher("/Chapter2.Task2.Details.jsp").forward(request, response);
-        } else {
-            request.getRequestDispatcher("/Chapter2.Task2.NotFound.jsp").forward(request, response);
-        }
+        DBManager.deleteTask(taskId);
+
+        response.sendRedirect("/");
     }
 }

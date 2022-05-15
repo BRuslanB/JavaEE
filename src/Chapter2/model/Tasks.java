@@ -5,15 +5,17 @@ public class Tasks {
     String name;
     String description;
     String deadlineDate;
+    boolean status;
 
     public Tasks() {
     }
 
-    public Tasks(Long id, String name, String description, String deadlineDate) {
+    public Tasks(Long id, String name, String description, String deadlineDate, boolean status) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.deadlineDate = deadlineDate;
+        this.status = status;
     }
 
     public Long getId() {
@@ -42,6 +44,14 @@ public class Tasks {
 
     public String getDeadlineDate() {
         return deadlineDate;
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 
     public void setDeadlineDate(String deadlineDate) {

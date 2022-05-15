@@ -23,7 +23,8 @@ public class HomeTask2 extends HttpServlet {
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response) throws ServletException, IOException {
         ArrayList<Tasks> tasks = DBManager.getAllTasks();
+        request.setCharacterEncoding("utf8");
         request.setAttribute("zadachi",tasks);
-        request.getRequestDispatcher("Chapter2.Task2.AllTasks.jsp").forward(request, response);
+        request.getRequestDispatcher("/Chapter2.Task2.AllTasks.jsp").forward(request, response);
     }
 }

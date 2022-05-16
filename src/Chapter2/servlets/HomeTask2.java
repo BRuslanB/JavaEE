@@ -11,17 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(value = "/Chapter2.HomeTask2")
+@WebServlet(value = "/chapter2_home_task2")
 public class HomeTask2 extends HttpServlet {
-
-    @Override
-    protected void doPost(HttpServletRequest request,
-                          HttpServletResponse response) throws ServletException, IOException {
-    }
 
     @Override
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response) throws ServletException, IOException {
+
         try {
             ArrayList<Tasks> tasks = DBManager.getAllTasks();
             request.setCharacterEncoding("utf8");

@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(value = "/chapter2_home_task1")
-public class HomeTask1 extends HttpServlet {
+@WebServlet(value = "/cinema_news")
+public class CinemaNews extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request,
@@ -20,6 +20,6 @@ public class HomeTask1 extends HttpServlet {
 
         ArrayList<News> news = DBManager.getAllNews();
         request.setAttribute("novosti",news);
-        request.getRequestDispatcher("Chapter2.Task1.AllNews.jsp").forward(request, response);
+        request.getRequestDispatcher("Chapter2.Task1.CinemaNews.jsp").forward(request, response);
     }
 }

@@ -8,16 +8,30 @@ integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLAS
 <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js"
 integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
 
-<!-- my style -->
+<!-- My style in Chapter2-->
+
 <style>
-    .bg_color1 {
-        background-color: darkblue;
-        color: white;
-    }
     .color1 {
         color: gray;
     }
-    .button_style {
+    .bg_color1 {
+        background-color: #2F4F4F;
+        color: whitesmoke;
+    }
+    .bg_color2 {
+        background-color: #f5f5f5;
+        color: black;
+    }
+    .bg_color3 {
+        background-color: #2c3034;
+        color: lightgray;
+        font-size: smaller;
+    }
+    .bg_color4 {
+        background-color: darkblue;
+        color: white;
+    }
+    .button_style1 {
         border-style: none;
         border-radius: 1px;
         background-color: darkblue;

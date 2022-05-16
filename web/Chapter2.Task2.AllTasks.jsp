@@ -1,6 +1,5 @@
 <%@ page import="Chapter2.model.Tasks" %>
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="Chapter2.db.DBManager" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -14,8 +13,8 @@
     <div class="container">
         <div class="row">
             <!-- Кнопка добавить -->
-            <form action="" method="get">
-                <button class="button_style" formaction="/add_task">+ Добавить задание</button>
+            <form action="/add_task">
+                <button class="button_style1">+ Добавить задание</button>
             </form>
             <!-- Основная область -->
             <table class="table table">

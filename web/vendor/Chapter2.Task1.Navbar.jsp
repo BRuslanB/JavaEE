@@ -12,16 +12,16 @@
                 <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="/Chapter2.Task1.AllNews.jsp">All News</a>
+                            <a class="nav-link" aria-current="page" href="/">All News</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/Chapter2.Task1.CultureNews.jsp">Culture News</a>
+                            <a class="nav-link" href="/culture_news">Culture News</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/Chapter2.Task1.SportNews.jsp">Sport News</a>
+                            <a class="nav-link" href="/sport_news">Sport News</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/Chapter2.Task1.CinemaNews.jsp">Cinema News</a>
+                            <a class="nav-link" href="/cinema_news">Cinema News</a>
                         </li>
                     </ul>
                     <form class="d-flex my-auto">

@@ -5,6 +5,10 @@
                      http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" version="4.0">
 
     <welcome-file-list>
-        <welcome-file>Chapter2.HomeTask2</welcome-file>
+        <!--<welcome-file>Chapter1.HomeTask1</welcome-file>
+        <welcome-file>Chapter1.HomeTask2</welcome-file>
+        <welcome-file>Chapter1.HomeTask3</welcome-file>
+        <welcome-file>chapter2_home_task1</welcome-file> -->
+        <welcome-file>chapter2_home_task2</welcome-file>
     </welcome-file-list>
 </web-app>

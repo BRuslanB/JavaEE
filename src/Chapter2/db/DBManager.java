@@ -5,8 +5,6 @@ import Chapter2.model.Tasks;
 
 import java.util.ArrayList;
 
-import static java.lang.System.out;
-
 public class DBManager {
     //Task 1
     public static ArrayList<News> news = new ArrayList<>();
@@ -56,7 +54,7 @@ public class DBManager {
         int i = 0;
         for (Tasks t : tasks) {
             if (t.getId() == id) {
-                //out.print("DBManager.set" + i + "\n");
+                //out.print("DBManager.set " + i + "\n");
                 tasks.set(i, task);
                 return;
             }
@@ -67,7 +65,7 @@ public class DBManager {
         int i = 0;
         for (Tasks t : tasks) {
             if (t.getId() == id) {
-                //out.print("DBManager.remove" + i + "\n");
+                //out.print("DBManager.remove " + i + "\n");
                 tasks.remove(i);
                 return;
             }

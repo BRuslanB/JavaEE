@@ -16,13 +16,9 @@ import java.util.ArrayList;
 public class HomeTask3 extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request,
-                          HttpServletResponse response) throws ServletException, IOException {
-    }
-
-    @Override
     protected void doGet(HttpServletRequest request,
                          HttpServletResponse response) throws ServletException, IOException {
+
         response.setContentType("text/html");
         PrintWriter out = response.getWriter();
         out.print("<html lang=\"en\">");

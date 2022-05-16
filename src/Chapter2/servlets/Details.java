@@ -10,22 +10,24 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-import static java.lang.System.out;
-
 @WebServlet(value = "/details")
 public class Details extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException, IOException {
+
         request.setCharacterEncoding("utf8");
         String id = request.getParameter("id");
         //out.print("details " + id + "\n");
+
         Long taskId = null;
         try {
             taskId = Long.parseLong(id);
         } catch (Exception e) {
         }
+
         Tasks task = DBManager.getTask(taskId);
+
         if (task != null) {
             request.setAttribute("zadacha", task);
             request.getRequestDispatcher("/Chapter2.Task2.Details.jsp").forward(request, response);

@@ -16,6 +16,7 @@ public class AddFootballer extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request,
                           HttpServletResponse response) throws ServletException, IOException {
+
         String name = request.getParameter("nameField");
         String surname = request.getParameter("surnameField");
         String club = request.getParameter("clubField");
@@ -32,11 +33,5 @@ public class AddFootballer extends HttpServlet {
         DBManager.addFootballer(player);
 
         response.sendRedirect("/");
-    }
-
-    @Override
-    protected void doGet(HttpServletRequest request,
-                         HttpServletResponse response) throws ServletException, IOException {
-
     }
 }

@@ -17,7 +17,7 @@
                         Tasks task = (Tasks) request.getAttribute("zadacha");
                         if (task != null) {
                     %>
-                    <form action="/save_task?id=<%=task.getId()%>" method="post">
+                    <form action="/save_task" method="post">
                         <div class="row mt-3">
                             <div class="col-12">
                                 <label>Наименование: </label>
@@ -25,6 +25,7 @@
                         </div>
                         <div class="row mt-2">
                             <div class="col-12">
+                                <input type="text" hidden name="task_id" required value="<%=task.getId()%>">
                                 <input type="text" class="form-control" name="task_name"
                                     required value="<%=task.getName()%>">
                             </div>
@@ -47,7 +48,7 @@
                         </div>
                         <div class="row mt-2">
                             <div class="col-12">
-                                <input type="text" class="form-control" name="task_deadline"
+                                <input type="date" class="form-control" name="task_deadline"
                                     required value="<%=task.getDeadlineDate()%>">
                             </div>
                         </div>
@@ -59,7 +60,6 @@
                         <div class="row mt-2">
                             <div class="col-12">
                                 <select class="form-control" name="task_status">
-                                           <%--required value="<%=(task.isStatus() ? "Да" : "Нет")%>"> не работает--%>
                                      <option value="false" <%=(task.isStatus() ? "" : "selected")%>>Нет</option>
                                      <option value="true" <%=(task.isStatus() ? "selected" : "")%>>Да</option>
                                  </select>
@@ -68,7 +68,7 @@
                         <div class="row mt-3">
                             <div class="col-12">
                                 <button type="submit" class="btn btn-success">Сохранить</button>
-                                <button type="submit" class="btn btn-danger ms-1" formaction="/delete_task?id=<%=task.getId()%>">Удалить</button>
+                                <button type="submit" class="btn btn-danger ms-1" formaction="/delete_task">Удалить</button>
                             </div>
                         </div>
                     </form>

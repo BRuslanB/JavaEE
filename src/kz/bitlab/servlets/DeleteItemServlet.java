@@ -17,7 +17,6 @@ public class DeleteItemServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
         Long id = Long.parseLong(request.getParameter("item_id"));
-        //out.print("deleteitem->item_id = " + id);
 
         Item item = DBConnector.getItem(id);
 

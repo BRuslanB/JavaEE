@@ -16,7 +16,7 @@ public class DBConnector {
             Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/javapro_db","postgres","postgres");
 
-        }catch (Exception e){
+        } catch (Exception e) {
 
             e.printStackTrace();
 
@@ -26,7 +26,7 @@ public class DBConnector {
 
         ArrayList<Item> items = new ArrayList<>();
 
-        try{
+        try {
             PreparedStatement statement = connection.prepareStatement("" +
                     "SELECT * FROM t_items");
             ResultSet resultSet = statement.executeQuery();
@@ -35,7 +35,7 @@ public class DBConnector {
                 Long id = resultSet.getLong("id");
                 String name = resultSet.getString("name");
                 String description = resultSet.getString("description");
-                int price = resultSet.getInt("price");
+                double price = resultSet.getDouble("price");
 
                 Item item = new Item();
                 item.setId(id);
@@ -48,7 +48,7 @@ public class DBConnector {
 
             statement.close();
 
-        }catch (Exception e){
+        } catch (Exception e){
 
             e.printStackTrace();
 
@@ -58,7 +58,7 @@ public class DBConnector {
     }
     public static void addItem(Item item){
 
-        try{
+        try {
 
             PreparedStatement statement = connection.prepareStatement("" +
                     "INSERT INTO t_items (name, description, price) " +
@@ -66,11 +66,11 @@ public class DBConnector {
 
             statement.setString(1, item.getName());
             statement.setString(2, item.getDescription());
-            statement.setInt(3, item.getPrice());
+            statement.setDouble(3, item.getPrice());
 
             statement.executeUpdate();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -78,7 +78,7 @@ public class DBConnector {
 
     public static void saveItem(Item item){
 
-        try{
+        try {
 
             PreparedStatement statement = connection.prepareStatement("" +
                     "UPDATE t_items SET name = ?, description = ?, price = ? " +
@@ -86,12 +86,12 @@ public class DBConnector {
 
             statement.setString(1, item.getName());
             statement.setString(2, item.getDescription());
-            statement.setInt(3, item.getPrice());
-            statement.setLong(4,item.getId());
+            statement.setDouble(3, item.getPrice());
+            statement.setLong(4, item.getId());
 
             statement.executeUpdate();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -99,16 +99,16 @@ public class DBConnector {
 
     public static void deleteItem(Item item){
 
-        try{
+        try {
 
             PreparedStatement statement = connection.prepareStatement("" +
                     "DELETE FROM t_items WHERE id = ?");
 
-            statement.setLong(1,item.getId());
+            statement.setLong(1, item.getId());
 
             statement.executeUpdate();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 
@@ -117,7 +117,7 @@ public class DBConnector {
 
         Item item = null;
 
-        try{
+        try {
 
             PreparedStatement statement = connection.prepareStatement("" +
                     "SELECT * FROM t_items WHERE id = ?");
@@ -126,11 +126,11 @@ public class DBConnector {
 
             ResultSet resultSet = statement.executeQuery();
 
-            if(resultSet.next()){
+            if (resultSet.next()) {
 
                 String name = resultSet.getString("name");
                 String desc = resultSet.getString("description");
-                int price = resultSet.getInt("price");
+                double price = resultSet.getDouble("price");
 
                 item = new Item();
                 item.setId(id);
@@ -142,7 +142,7 @@ public class DBConnector {
 
             statement.close();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
 

@@ -29,7 +29,7 @@ public class AddItemServlet extends HttpServlet {
         Item item = new Item();
         item.setName(name);
         item.setDescription(desc);
-        item.setPrice(Integer.parseInt(price));
+        item.setPrice(Double.parseDouble(price));
 
         DBConnector.addItem(item);
 

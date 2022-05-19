@@ -20,13 +20,13 @@ public class DetailsServlet extends HttpServlet {
         Long itemId = null;
         try {
             itemId = Long.parseLong(id);
-        }catch (Exception e){
+        } catch (Exception e) {
         }
         Item item = DBConnector.getItem(itemId);
-        if(item!=null){
+        if (item!=null) {
             request.setAttribute("tovar", item);
             request.getRequestDispatcher("/kz.bitlab.details.jsp").forward(request, response);
-        }else{
+        } else {
             request.getRequestDispatcher("/kz.bitlab.404.jsp").forward(request, response);
         }
     }

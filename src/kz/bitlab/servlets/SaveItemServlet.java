@@ -26,7 +26,7 @@ public class SaveItemServlet extends HttpServlet {
         if (item != null) {
             item.setName(name);
             item.setDescription(desc);
-            item.setPrice(Integer.parseInt(price));
+            item.setPrice(Double.parseDouble(price));
 
             DBConnector.saveItem(item);
 

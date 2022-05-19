@@ -46,7 +46,8 @@
             </div>
             <div class="row mt-2">
               <div class="col-12">
-                <input type="number" class="form-control" name="item_price" required
+                <input type="number" step="0.01"  max="10000000" min="0"
+                       class="form-control" name="item_price"
                        placeholder="Price: " value="<%=item.getPrice()%>">
               </div>
             </div>
@@ -68,7 +69,7 @@
                   <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <form action="/kz.bitlab.deleteitem" method="post">
-                  <input type="hidden" name = "item_id" value="<%=item.getId()%>">
+                  <input type="hidden" name="item_id" value="<%=item.getId()%>">
                   <div class="modal-body">
                     <h5 class="text-center">
                       Are you sure?

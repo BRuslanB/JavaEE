@@ -9,7 +9,8 @@
         <welcome-file>Chapter1.HomeTask2</welcome-file>
         <welcome-file>Chapter1.HomeTask3</welcome-file>
         <welcome-file>chapter2_home_task1</welcome-file>
-        <welcome-file>chapter2_home_task2</welcome-file> -->
-        <welcome-file>kz.bitlab.home</welcome-file>
+        <welcome-file>chapter2_home_task2</welcome-file>
+        <welcome-file>kz.bitlab.home</welcome-file> -->
+        <welcome-file>chapter3_home</welcome-file>
     </welcome-file-list>
 </web-app>

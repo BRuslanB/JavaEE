@@ -33,7 +33,8 @@
                         <td><% out.print(item.getDescription());%></td>
                         <td><% out.print(item.getPrice());%></td>
                         <td>
-                            <a href="/kz.bitlab.details?id=<% out.print(item.getId());%>" class="btn btn-primary btn-sm">DETAILS</a>
+                            <a href="/kz.bitlab.details?id=<%=item.getId()%>"
+                               class="btn btn-primary btn-sm">DETAILS</a>
                         </td>
                     </tr>
                     <%

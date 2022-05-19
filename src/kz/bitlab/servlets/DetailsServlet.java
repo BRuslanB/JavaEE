@@ -14,7 +14,8 @@ import java.io.IOException;
 public class DetailsServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
         String id = request.getParameter("id");
         Long itemId = null;

@@ -27,7 +27,8 @@
                     </div>
                     <div class="row mt-2">
                         <div class="col-12">
-                            <textarea type="text" class="form-control" name="item_description" required placeholder="Description: "></textarea>
+                            <textarea type="text" class="form-control" name="item_description"
+                                      required placeholder="Description: "></textarea>
                         </div>
                     </div>
                     <div class="row mt-3">

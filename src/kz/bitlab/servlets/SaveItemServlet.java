@@ -14,7 +14,8 @@ import java.io.IOException;
 public class SaveItemServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
         Long id = Long.parseLong(request.getParameter("item_id"));
         String name = request.getParameter("item_name");

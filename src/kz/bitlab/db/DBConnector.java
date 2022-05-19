@@ -14,7 +14,8 @@ public class DBConnector {
     static {
         try {
             Class.forName("org.postgresql.Driver");
-            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/javapro_db","postgres","postgres");
+            connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/javapro_db",
+                    "postgres","postgres");
 
         } catch (Exception e) {
 

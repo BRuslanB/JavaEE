@@ -15,8 +15,8 @@ import java.util.ArrayList;
 public class HomeServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request,
-                         HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
 
         ArrayList<Item> allItems = DBConnector.getAllItem();
         request.setAttribute("tovary", allItems);

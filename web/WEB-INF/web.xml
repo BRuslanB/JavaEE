@@ -10,7 +10,14 @@
         <welcome-file>Chapter1.HomeTask3</welcome-file>
         <welcome-file>chapter2_home_task1</welcome-file>
         <welcome-file>chapter2_home_task2</welcome-file>
-        <welcome-file>chapter3_home</welcome-file> -->
-        <welcome-file>kz.bitlab.home</welcome-file>
+        <welcome-file>chapter3_home</welcome-file>
+        <welcome-file>kz.bitlab.home</welcome-file> -->
+        <welcome-file>SprintTask1_home</welcome-file>
     </welcome-file-list>
+
+    <error-page>
+        <error-code>404</error-code>
+        <location>/page_not_found</location>
+    </error-page>
+
 </web-app>

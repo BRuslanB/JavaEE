@@ -1,5 +1,5 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="Chapter3.model.Students" %>
+<%@ page import="Chapter3.model.Student" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -25,16 +25,16 @@
                     </thead>
                     <tbody>
                     <%
-                        ArrayList<Students> students = (ArrayList<Students>) request.getAttribute("all_students");
+                        ArrayList<Student> students = (ArrayList<Student>) request.getAttribute("all_students");
                         if (students != null) {
-                            for (Students student : students) {
+                            for (Student student : students) {
                     %>
                         <tr>
-                            <td><% out.print(student.getId());%></td>
-                            <td><% out.print(student.getName());%></td>
-                            <td><% out.print(student.getSurname());%></td>
-                            <td><% out.print(student.getBirthdate());%></td>
-                            <td><% out.print(student.getCity());%></td>
+                            <td><%=student.getId()%></td>
+                            <td><%=student.getName()%></td>
+                            <td><%=student.getSurname()%></td>
+                            <td><%=student.getBirthdate()%></td>
+                            <td><%=student.getCity().getName()%></td>
                             <td>
                                 <a href="/chapter3_details?student_id=<%=student.getId()%>" class="btn btn-primary btn-sm">DETAILS</a>
                             </td>

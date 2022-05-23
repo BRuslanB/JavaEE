@@ -1,7 +1,7 @@
 package Chapter3.servlets;
 
 import Chapter3.db.DBConnector;
-import Chapter3.model.Students;
+import Chapter3.model.Student;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -19,11 +19,15 @@ public class DetailsServlet extends HttpServlet {
 
         String id = request.getParameter("student_id");
         Long itemId = null;
+
         try {
             itemId = Long.parseLong(id);
-        }catch (Exception e){
+
+        } catch(Exception e) {
+
         }
-        Students student = DBConnector.getStudent(itemId);
+
+        Student student = DBConnector.getStudent(itemId);
         if (student != null) {
             request.setAttribute("one_student", student);
             request.getRequestDispatcher("Chapter3.Details.jsp").forward(request, response);

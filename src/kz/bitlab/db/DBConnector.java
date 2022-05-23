@@ -2,10 +2,7 @@ package kz.bitlab.db;
 
 import kz.bitlab.model.Item;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class DBConnector {
@@ -18,9 +15,7 @@ public class DBConnector {
                     "postgres","postgres");
 
         } catch (Exception e) {
-
             e.printStackTrace();
-
         }
     }
     public static ArrayList<Item> getAllItem(){
@@ -50,9 +45,7 @@ public class DBConnector {
             statement.close();
 
         } catch (Exception e){
-
             e.printStackTrace();
-
         }
 
         return items;
@@ -60,7 +53,6 @@ public class DBConnector {
     public static void addItem(Item item){
 
         try {
-
             PreparedStatement statement = connection.prepareStatement("" +
                     "INSERT INTO t_items (name, description, price) " +
                     "VALUES (?, ?, ?)");
@@ -74,13 +66,11 @@ public class DBConnector {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     public static void saveItem(Item item){
 
         try {
-
             PreparedStatement statement = connection.prepareStatement("" +
                     "UPDATE t_items SET name = ?, description = ?, price = ? " +
                     "WHERE id = ?");
@@ -95,13 +85,11 @@ public class DBConnector {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
 
     public static void deleteItem(Item item){
 
         try {
-
             PreparedStatement statement = connection.prepareStatement("" +
                     "DELETE FROM t_items WHERE id = ?");
 
@@ -112,14 +100,13 @@ public class DBConnector {
         } catch (Exception e) {
             e.printStackTrace();
         }
-
     }
+
     public static Item getItem(Long id){
 
         Item item = null;
 
         try {
-
             PreparedStatement statement = connection.prepareStatement("" +
                     "SELECT * FROM t_items WHERE id = ?");
 
@@ -140,7 +127,6 @@ public class DBConnector {
                 item.setDescription(desc);
 
             }
-
             statement.close();
 
         } catch (Exception e) {

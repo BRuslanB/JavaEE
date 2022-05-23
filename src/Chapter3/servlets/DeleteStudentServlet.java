@@ -1,7 +1,7 @@
 package Chapter3.servlets;
 
 import Chapter3.db.DBConnector;
-import Chapter3.model.Students;
+import Chapter3.model.Student;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -18,7 +18,7 @@ public class DeleteStudentServlet extends HttpServlet {
             throws ServletException, IOException {
 
         Long id = Long.parseLong(request.getParameter("student_id"));
-        Students student = DBConnector.getStudent(id);
+        Student student = DBConnector.getStudent(id);
 
         if (student != null) {
             DBConnector.deleteStudent(student);

@@ -1,4 +1,6 @@
-<%@ page import="Chapter3.model.Students" %>
+<%@ page import="Chapter3.model.Student" %>
+<%@ page import="Chapter3.model.City" %>
+<%@ page import="java.util.ArrayList" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,7 +15,7 @@
       <div class="col-12">
         <div class="col-6 mx-auto">
           <%
-            Students student = (Students) request.getAttribute("one_student");
+            Student student = (Student) request.getAttribute("one_student");
             if (student != null) {
           %>
             <form action="/chapter3_save_student" method="post">
@@ -58,40 +60,28 @@
               </div>
               <div class="row mt-2">
                 <div class="col-12">
-                  <input type="text" class="form-control" name="student_city" required
-                         placeholder="CITY: " value="<%=student.getCity()%>">
+                  <select name="city_id" class="form-select">
+                    <%
+                      ArrayList<City> cities = (ArrayList<City>) request.getAttribute("all_cities");
+                      if (cities != null) {
+                        for (City city : cities) {
+                    %>
+                          <option value="<%=city.getId()%>" <%=city.getId()==student.getCity().getId() ? "selected" : ""%>>
+                            <%=city.getName()%>
+                          </option>
+                    <%
+                        }
+                      }
+                    %>>
+                  </select>
                 </div>
               </div>
               <div class="row mt-3">
                 <div class="col-12">
                   <button class="btn btn-success">SAVE STUDENT</button>
-                  <button type="button" class="btn btn-danger ms-2" data-bs-toggle="modal" data-bs-target="#deleteModal">DELETE STUDENT</button>
-                </div>
+                  <a href="/chapter3_details?student_id=<%=student.getId()%>" class="btn btn-primary btn-sm">CANCEL</a>                </div>
               </div>
             </form>
-            <!-- Modal DELETE -->
-            <div class="modal fade" id="deleteModal" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-hidden="true">
-              <div class="modal-dialog">
-                <div class="modal-content">
-                  <div class="modal-header">
-                    <h5 class="modal-title">Delete Student</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                  </div>
-                  <form action="/chapter3_delete_student" method="post">
-                    <input type="hidden" name="student_id" value="<%=student.getId()%>">
-                    <div class="modal-body">
-                      <h5 class="text-center">
-                        Are you sure?
-                      </h5>
-                    </div>
-                    <div class="modal-footer">
-                      <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                      <button class="btn btn-primary">Yes</button>
-                    </div>
-                  </form>
-                </div>
-              </div>
-            </div>
           <%
             }
           %>

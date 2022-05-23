@@ -1,3 +1,5 @@
+<%@ page import="java.util.ArrayList" %>
+<%@ page import="Chapter3.model.City" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -48,7 +50,20 @@
                     </div>
                     <div class="row mt-2">
                         <div class="col-12">
-                            <input type="text" class="form-control" name="student_city" required placeholder="City: ">
+                            <select name="city_id" class="form-select">
+                                <%
+                                    ArrayList<City> cities = (ArrayList<City>) request.getAttribute("all_cities");
+                                    if (cities != null) {
+                                        for (City city : cities) {
+                                %>
+                                            <option value="<%=city.getId()%>">
+                                                <%=city.getName()%>
+                                            </option>
+                                <%
+                                        }
+                                    }
+                                %>>
+                            </select>
                         </div>
                     </div>
                     <div class="row mt-3">

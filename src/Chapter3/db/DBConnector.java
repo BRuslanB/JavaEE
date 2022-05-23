@@ -1,31 +1,34 @@
 package Chapter3.db;
 
-import Chapter3.model.Students;
+import Chapter3.model.City;
+import Chapter3.model.Student;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class DBConnector {
     private static Connection connection;
 
     static {
+
         try {
             Class.forName("org.postgresql.Driver");
             connection = DriverManager.getConnection("jdbc:postgresql://localhost:5432/javapro_db","postgres","postgres");
-        }catch (Exception e){
+
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
-    public static ArrayList<Students> getAllStudents(){
+    public static ArrayList<Student> getAllStudents(){
 
-        ArrayList<Students> students = new ArrayList<>();
+        ArrayList<Student> students = new ArrayList<>();
 
-        try{
+        try {
             PreparedStatement statement = connection.prepareStatement("" +
-                    "SELECT * FROM t_students");
+                    "SELECT ts.id, ts.name, ts.surname, ts.birthdate, ts.city_id, tc.name AS cityName " +
+                    "FROM t_students ts " +
+                    "INNER JOIN t_cities tc on ts.city_id = tc.id");
+
             ResultSet resultSet = statement.executeQuery();
 
             while (resultSet.next()) {
@@ -33,9 +36,12 @@ public class DBConnector {
                 String name = resultSet.getString("name");
                 String surname = resultSet.getString("surname");
                 String birthdate = resultSet.getString("birthdate");
-                String city = resultSet.getString("city");
 
-                Students student = new Students();
+                City city = new City();
+                city.setId(resultSet.getLong("city_id"));
+                city.setName(resultSet.getString("cityName"));
+
+                Student student = new Student();
                 student.setId(id);
                 student.setName(name);
                 student.setSurname(surname);
@@ -44,25 +50,24 @@ public class DBConnector {
 
                 students.add(student);
             }
-
             statement.close();
 
-        } catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return students;
     }
-    public static void addStudent(Students student){
+    public static void addStudent(Student student){
 
         try{
             PreparedStatement statement = connection.prepareStatement("" +
-                    "INSERT INTO t_students (name, surname, birthdate, city) " +
+                    "INSERT INTO t_students (name, surname, birthdate, city_id) " +
                     "VALUES (?, ?, ?, ?)");
 
             statement.setString(1, student.getName());
             statement.setString(2, student.getSurname());
             statement.setString(3, student.getBirthdate());
-            statement.setString(4, student.getCity());
+            statement.setLong(4, student.getCity().getId());
 
             statement.executeUpdate();
 
@@ -71,63 +76,68 @@ public class DBConnector {
         }
     }
 
-    public static Students getStudent(Long id){
+    public static Student getStudent(Long s_id){
 
-        Students student = null;
+        Student student = null;
 
-        try{
+        try {
             PreparedStatement statement = connection.prepareStatement("" +
-                    "SELECT * FROM t_students WHERE id = ?");
+                    "SELECT ts.id, ts.name, ts.surname, ts.birthdate, ts.city_id, tc.name AS cityName " +
+                    "FROM t_students ts " +
+                    "INNER JOIN t_cities tc on ts.city_id = tc.id " +
+                    "WHERE ts.id = ? LIMIT 1");
 
-            statement.setLong(1, id);
+            statement.setLong(1, s_id);
 
             ResultSet resultSet = statement.executeQuery();
 
             if (resultSet.next()) {
-
+                Long id = resultSet.getLong("id");
                 String name = resultSet.getString("name");
                 String surname = resultSet.getString("surname");
                 String birthdate = resultSet.getString("birthdate");
-                String city = resultSet.getString("city");
 
-                student = new Students();
+                City city = new City();
+                city.setId(resultSet.getLong("city_id"));
+                city.setName(resultSet.getString("cityName"));
+
+                student = new Student();
                 student.setId(id);
                 student.setName(name);
                 student.setSurname(surname);
                 student.setBirthdate(birthdate);
                 student.setCity(city);
             }
-
             statement.close();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
         return student;
     }
-    public static void saveStudent(Students student){
+    public static void saveStudent(Student student){
 
-        try{
+        try {
             PreparedStatement statement = connection.prepareStatement("" +
-                    "UPDATE t_students SET name = ?, surname = ?, birthdate = ?, city = ? " +
+                    "UPDATE t_students SET name = ?, surname = ?, birthdate = ?, city_id = ? " +
                     "WHERE id = ?");
 
             statement.setString(1, student.getName());
             statement.setString(2, student.getSurname());
             statement.setString(3, student.getBirthdate());
-            statement.setString(4, student.getCity());
+            statement.setLong(4, student.getCity().getId());
             statement.setLong(5,student.getId());
 
             statement.executeUpdate();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
 
-    public static void deleteStudent(Students student){
+    public static void deleteStudent(Student student){
 
-        try{
+        try {
             PreparedStatement statement = connection.prepareStatement("" +
                     "DELETE FROM t_students WHERE id = ?");
 
@@ -135,8 +145,55 @@ public class DBConnector {
 
             statement.executeUpdate();
 
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+    public static ArrayList<City> getAllCities(){
+
+        ArrayList<City> cities = new ArrayList<>();
+
+        try {
+            PreparedStatement statement = connection.prepareStatement("" +
+                    "SELECT * FROM t_cities ORDER BY name ASC");
+
+            ResultSet resultSet = statement.executeQuery();
+
+            while (resultSet.next()) {
+                City city = new City();
+                city.setId(resultSet.getLong("id"));
+                city.setName(resultSet.getString("name"));
+
+                cities.add(city);
+            }
+            statement.close();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return cities;
+    }
+
+    public static City getCity(Long c_id) {
+        City city = null;
+        try {
+            PreparedStatement statement = connection.prepareStatement("" +
+                    "SELECT * FROM t_cities WHERE id = ? LIMIT 1");
+
+            statement.setLong(1, c_id);
+
+            ResultSet resultSet = statement.executeQuery();
+
+            if (resultSet.next()) {
+                city = new City();
+                city.setId(resultSet.getLong("id"));
+                city.setName(resultSet.getString("name"));
+            }
+            statement.close();
+
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        return city;
     }
 }

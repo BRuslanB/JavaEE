@@ -1,7 +1,8 @@
 package Chapter3.servlets;
 
 import Chapter3.db.DBConnector;
-import Chapter3.model.Students;
+import Chapter3.model.City;
+import Chapter3.model.Student;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -17,22 +18,30 @@ public class SaveStudentServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
+        request.setCharacterEncoding("utf8");
         Long id = Long.parseLong(request.getParameter("student_id"));
         String name = request.getParameter("student_name");
         String surname = request.getParameter("student_surname");
         String birthdate = request.getParameter("student_birthdate");
-        String city = request.getParameter("student_city");
+        Long city_id = Long.parseLong(request.getParameter("city_id"));
 
-        Students student = DBConnector.getStudent(id);
+        Student student = DBConnector.getStudent(id);
 
         if (student != null) {
-            student.setName(name);
-            student.setSurname(surname);
-            student.setBirthdate(birthdate);
-            student.setCity(city);
 
-            DBConnector.saveStudent(student);
+            City city = DBConnector.getCity(city_id);
 
+            if (city != null) {
+                student.setName(name);
+                student.setSurname(surname);
+                student.setBirthdate(birthdate);
+                student.setCity(city);
+
+                DBConnector.saveStudent(student);
+            }
+            response.sendRedirect("/chapter3_details?student_id=" + id);
+
+        } else {
             response.sendRedirect("/");
         }
     }

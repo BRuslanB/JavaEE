@@ -1,17 +1,17 @@
 package Chapter3.model;
 
-public class Students {
+public class Student {
     Long id;
     String name;
     String surname;
     String birthdate;
-    String city;
+    City city;
 
-    public Students() {
+    public Student() {
 
     }
 
-    public Students(Long id, String name, String surname, String birthdate, String city) {
+    public Student(Long id, String name, String surname, String birthdate, City city) {
         this.id = id;
         this.name = name;
         this.surname = surname;
@@ -51,11 +51,11 @@ public class Students {
         this.birthdate = birthdate;
     }
 
-    public String getCity() {
+    public City getCity() {
         return city;
     }
 
-    public void setCity(String city) {
+    public void setCity(City city) {
         this.city = city;
     }
 }

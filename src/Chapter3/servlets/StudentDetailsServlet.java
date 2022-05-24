@@ -10,27 +10,27 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(value = "/chapter3_details")
-public class DetailsServlet extends HttpServlet {
+@WebServlet(value = "/chapter3_student_details")
+public class StudentDetailsServlet extends HttpServlet {
 
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
         String id = request.getParameter("student_id");
-        Long itemId = null;
+        Long s_id = null;
 
         try {
-            itemId = Long.parseLong(id);
+            s_id = Long.parseLong(id);
 
         } catch(Exception e) {
 
         }
 
-        Student student = DBConnector.getStudent(itemId);
+        Student student = DBConnector.getStudent(s_id);
         if (student != null) {
             request.setAttribute("one_student", student);
-            request.getRequestDispatcher("Chapter3.Details.jsp").forward(request, response);
+            request.getRequestDispatcher("Chapter3.StudentDetails.jsp").forward(request, response);
         } else {
             request.getRequestDispatcher("/kz.bitlab.404.jsp").forward(request, response);
         }

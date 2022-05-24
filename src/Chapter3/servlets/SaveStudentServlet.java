@@ -39,7 +39,7 @@ public class SaveStudentServlet extends HttpServlet {
 
                 DBConnector.saveStudent(student);
             }
-            response.sendRedirect("/chapter3_details?student_id=" + id);
+            response.sendRedirect("/chapter3_student_details?student_id=" + id);
 
         } else {
             response.sendRedirect("/");

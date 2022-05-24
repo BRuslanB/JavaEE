@@ -79,7 +79,7 @@
               <div class="row mt-3">
                 <div class="col-12">
                   <button class="btn btn-success">SAVE STUDENT</button>
-                  <a href="/chapter3_details?student_id=<%=student.getId()%>" class="btn btn-primary btn-sm">CANCEL</a>                </div>
+                  <a href="/chapter3_student_details?student_id=<%=student.getId()%>" class="btn btn-secondary">CANCEL</a>                </div>
               </div>
             </form>
           <%

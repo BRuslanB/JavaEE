@@ -1,5 +1,5 @@
 <%@ page import="java.util.ArrayList" %>
-<%@ page import="Chapter3.model.Student" %>
+<%@ page import="Chapter3.model.City" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -12,7 +12,7 @@
     <div class="container">
         <div class="row mt-3">
             <div class="col-12">
-                <a href="/chapter3_add_student" class="btn btn-success btn-sm">+ADD NEW</a>
+                <a href="/chapter3_add_city" class="btn btn-success btn-sm">+ADD NEW</a>
             </div>
             <div class="col-12">
                 <table class="table table-hover">
@@ -20,26 +20,22 @@
                     <tr>
                         <th>ID</th>
                         <th>NAME</th>
-                        <th>SURNAME</th>
-                        <th>BIRTHDATE</th>
-                        <th>CITY</th>
+                        <th>CODE</th>
                         <th>DETAILS</th>
                     </tr>
                     </thead>
                     <tbody>
                     <%
-                        ArrayList<Student> students = (ArrayList<Student>) request.getAttribute("all_students");
-                        if (students != null) {
-                            for (Student student : students) {
+                        ArrayList<City> cities = (ArrayList<City>) request.getAttribute("all_cities");
+                        if (cities != null) {
+                            for (City city : cities) {
                     %>
                         <tr>
-                            <td><%=student.getId()%></td>
-                            <td><%=student.getName()%></td>
-                            <td><%=student.getSurname()%></td>
-                            <td><%=student.getBirthdate()%></td>
-                            <td><%=student.getCity().getName()%></td>
+                            <td><%=city.getId()%></td>
+                            <td><%=city.getName()%></td>
+                            <td><%=city.getCode()%></td>
                             <td>
-                                <a href="/chapter3_student_details?student_id=<%=student.getId()%>"
+                                <a href="/chapter3_city_details?city_id=<%=city.getId()%>"
                                    class="btn btn-primary btn-sm">DETAILS</a>
                             </td>
                         </tr>

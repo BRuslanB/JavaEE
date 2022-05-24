@@ -17,8 +17,17 @@ public class DeleteStudentServlet extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        Long id = Long.parseLong(request.getParameter("student_id"));
-        Student student = DBConnector.getStudent(id);
+        String id = request.getParameter("student_id");
+        Long s_id = null;
+
+        try {
+            s_id = Long.parseLong(id);
+
+        } catch(Exception e) {
+
+        }
+
+        Student student = DBConnector.getStudent(s_id);
 
         if (student != null) {
             DBConnector.deleteStudent(student);

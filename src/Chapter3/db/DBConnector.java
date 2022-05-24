@@ -149,6 +149,7 @@ public class DBConnector {
             e.printStackTrace();
         }
     }
+
     public static ArrayList<City> getAllCities(){
 
         ArrayList<City> cities = new ArrayList<>();
@@ -163,6 +164,7 @@ public class DBConnector {
                 City city = new City();
                 city.setId(resultSet.getLong("id"));
                 city.setName(resultSet.getString("name"));
+                city.setCode(resultSet.getString("code"));
 
                 cities.add(city);
             }
@@ -188,6 +190,7 @@ public class DBConnector {
                 city = new City();
                 city.setId(resultSet.getLong("id"));
                 city.setName(resultSet.getString("name"));
+                city.setCode(resultSet.getString("code"));
             }
             statement.close();
 
@@ -195,5 +198,55 @@ public class DBConnector {
             throw new RuntimeException(e);
         }
         return city;
+    }
+
+    public static void addCity(City city){
+
+        try {
+            PreparedStatement statement = connection.prepareStatement("" +
+                    "INSERT INTO t_cities (name, code) " +
+                    "VALUES (?, ?)");
+
+            statement.setString(1, city.getName());
+            statement.setString(2, city.getCode());
+
+            statement.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void saveCity(City city){
+
+        try {
+            PreparedStatement statement = connection.prepareStatement("" +
+                    "UPDATE t_cities SET name = ?, code = ? " +
+                    "WHERE id = ?");
+
+            statement.setString(1, city.getName());
+            statement.setString(2, city.getCode());
+            statement.setLong(3,city.getId());
+
+            statement.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static void deleteCity(City city){
+
+        try {
+            PreparedStatement statement = connection.prepareStatement("" +
+                    "DELETE FROM t_cities WHERE id = ?");
+
+            statement.setLong(1, city.getId());
+
+            statement.executeUpdate();
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 }

@@ -39,7 +39,7 @@ public class DeleteCityServlet extends HttpServlet {
             if (students != null) {
                 for (Student student : students) {
                     if (student.getCity().getId() == c_id) {
-                        redirect = "/chapter3_city_details?city_id=" + c_id + "&error";
+                        redirect = "/chapter3_city_details?city_id=" + c_id + "&wrong";
                         del = false;
                         break;
                     }

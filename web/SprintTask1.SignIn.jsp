@@ -9,8 +9,8 @@
     <div class="bg-white">
         <div class="container">
             <%
-                boolean f_alert = Boolean.parseBoolean((String) request.getAttribute("alert_visible"));
-                if (f_alert) {
+                String error = request.getParameter("error");
+                if (error != null) {
             %>
                     <div class="col-8 row alert alert-danger alert-dismissible fade show mt-3 mx-auto" role="alert">
                         <span>Incorrect <b>email</b> and <b>password</b>!</span>

@@ -18,9 +18,6 @@ public class LoginServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        //ArrayList<User> allUsers = DBConnector.getAllUser();
-        //request.setAttribute("all_users", allUsers);
-        request.setAttribute("alert_visible", "false");
         request.getRequestDispatcher("/SprintTask1.SignIn.jsp").forward(request, response);
     }
 
@@ -30,8 +27,6 @@ public class LoginServlet extends HttpServlet {
 
         String email = request.getParameter("user_email");
         String password = request.getParameter("user_password");
-        //out.print("email = " + email + "\n");
-        //out.print("password = " + password + "\n");
 
         ArrayList<User> users = DBConnector.getAllUser();
         if (users != null) {
@@ -44,7 +39,6 @@ public class LoginServlet extends HttpServlet {
             }
         }
         //out.print("NO" + "\n");
-        request.setAttribute("alert_visible", "true");
-        request.getRequestDispatcher("/SprintTask1.SignIn.jsp").forward(request, response);
+        response.sendRedirect("/SprintTask1_login?error");
     }
 }

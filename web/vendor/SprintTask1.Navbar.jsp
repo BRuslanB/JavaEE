@@ -18,6 +18,12 @@
                         <a class="nav-link" href="/">By Category</a>
                     </li>
                     <li class="nav-item">
+                        <a class="nav-link" href="/SprintTask1_item_list">Admin Panel</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/SprintTask1_brand_list">Brand Panel</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/SprintTask1_login">Sign in</a>
                     </li>
                 </ul>

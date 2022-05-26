@@ -20,6 +20,6 @@ public class TopSalesServlet extends HttpServlet {
 
         ArrayList<Item> topItems = DBConnector.getAllItemTop();
         request.setAttribute("all_items", topItems);
-        request.getRequestDispatcher("/SprintTask1.Items.jsp").forward(request, response);
+        request.getRequestDispatcher("/SprintTask1.ItemCards.jsp").forward(request, response);
     }
 }

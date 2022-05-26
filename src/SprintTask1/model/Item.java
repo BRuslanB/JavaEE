@@ -6,18 +6,17 @@ public class Item {
     private String name;
     private String description;
     private double price;
+    private Brand brand;
 
     public Item() {
     }
 
-    public Item(Long id, String name, String description, double price) {
+    public Item(Long id, String name, String description, double price, Brand brand) {
         this.id = id;
-
         this.name = name;
-
         this.description = description;
-
         this.price = price;
+        this.brand = brand;
     }
 
     public Long getId() {
@@ -50,5 +49,13 @@ public class Item {
 
     public void setPrice(double price) {
         this.price = price;
+    }
+
+    public Brand getBrand() {
+        return brand;
+    }
+
+    public void setBrand(Brand brand) {
+        this.brand = brand;
     }
 }

@@ -24,11 +24,11 @@
       <div class="col-12">
         <div class="col-6 mx-auto">
           <%
-            String error = request.getParameter("error");
-            if (error != null) {
+            String wrong = request.getParameter("wrong");
+            if (wrong != null) {
           %>
             <div class="alert alert-danger alert-dismissible fade show" role="alert">
-              Unable to remove the country that is used in the list of students!
+              <span>Unable to remove the <b>country</b> that is used in the list of <b>students</b>!</span>
               <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
             </div>
           <%

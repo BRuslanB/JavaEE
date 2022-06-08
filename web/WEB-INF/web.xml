@@ -17,8 +17,9 @@
         <welcome-file>chapter6_task2_home</welcome-file>
         <welcome-file>chapter6_task3_home</welcome-file>
         <welcome-file>chapter7_task1_home</welcome-file>
-        <welcome-file>chapter7_task2_home</welcome-file> -->
-        <welcome-file>chapter7_task3_home</welcome-file>
+        <welcome-file>chapter7_task2_home</welcome-file>
+        <welcome-file>chapter7_task3_home</welcome-file> -->
+        <welcome-file>SprintTask2_home</welcome-file>
     </welcome-file-list>
 
     <error-page>

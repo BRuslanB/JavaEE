@@ -28,7 +28,6 @@ public class RemoveCookiesServlet extends HttpServlet {
                 }
             }
         }
-
         response.sendRedirect("/SprintTask2_home");
     }
 }

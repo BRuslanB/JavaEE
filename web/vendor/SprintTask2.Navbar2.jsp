@@ -1,8 +1,11 @@
 <%@ page import="SprintTask2.model.Publication" %>
 <%@ page import="java.util.ArrayList" %>
+<%@ page import="SprintTask2.model.User" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%
     Long public_id = (Long) request.getAttribute("my_public");
+    User currentUser = (User) request.getAttribute("current_user");
+    //out.print("current_user="+currentUser);
 %>
 <div class="container">
     <div class="row">

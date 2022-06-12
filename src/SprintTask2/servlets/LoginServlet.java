@@ -1,10 +1,10 @@
 package SprintTask2.servlets;
 
-import SprintTask2.model.User;
-import SprintTask2.db.DBConnector;
 import SprintTask2.model.Language;
 import SprintTask2.model.News;
 import SprintTask2.model.Publication;
+import SprintTask2.model.User;
+import SprintTask2.db.DBConnector;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -12,14 +12,14 @@ import javax.servlet.http.*;
 import java.io.IOException;
 import java.util.ArrayList;
 
-@WebServlet(value = "/SprintTask2_home")
-public class HomeServlet extends HttpServlet {
+@WebServlet(value = "/SprintTask2_login")
+public class LoginServlet extends HttpServlet {
 
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request,
+                         HttpServletResponse response) throws ServletException, IOException {
 
-        request.removeAttribute("user_action");
+        request.setAttribute("user_action", "login");
 
         HttpSession session = request.getSession();
         User user = (User) session.getAttribute("activ_user");
@@ -28,7 +28,6 @@ public class HomeServlet extends HttpServlet {
             request.setAttribute("current_user", user);
         }
 
-        Cookie[] cookies = request.getCookies();
         String cookie_lang = null;
         String cookie_public = null;
         Long lang_id = null;
@@ -36,11 +35,12 @@ public class HomeServlet extends HttpServlet {
         Language language = null;
         Publication publication = null;
 
+        Cookie[] cookies = request.getCookies();
         if (cookies != null) {
             for (Cookie cookie : cookies) {
                 if (cookie.getName().equals("news_lang")) {
                     cookie_lang = cookie.getValue();
-                } else if ((cookie.getName().equals("news_public"))) {
+                } else if (cookie.getName().equals("news_public")) {
                     cookie_public = cookie.getValue();
                 }
             }
@@ -76,5 +76,31 @@ public class HomeServlet extends HttpServlet {
         request.setAttribute("all_news", allNews);
 
         request.getRequestDispatcher("/SprintTask2.NewsCards.jsp").forward(request, response);
+    }
+
+    @Override
+    protected void doPost(HttpServletRequest request,
+                          HttpServletResponse response) throws ServletException, IOException {
+
+        String email = request.getParameter("email_value");
+        String password = request.getParameter("password_value");
+
+        ArrayList<User> users = DBConnector.getAllUser();
+
+        String redirect = "/SprintTask2_login?userError";
+
+        for (User user : users) {
+            if (user != null) {
+                if (user.getEmail().equals(email)) {
+                    if (user.getPassword().equals(password)) {
+                        request.getSession().setAttribute("activ_user", user);
+                        redirect = "/SprintTask2_home";
+                        break;
+                    }
+                    redirect = "/SprintTask2_login?passwordError";
+                }
+            }
+        }
+        response.sendRedirect(redirect);
     }
 }
